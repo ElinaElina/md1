@@ -1,61 +1,95 @@
+/*
+  Uzliekam box-sizing visiem elementiem uz border-box
+  lai vieglak saprast elementu platumu
+  https://css-tricks.com/box-sizing/
+*/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
-    background: #ccc;
-    margin: 0;
-}
-.first {
-    
-    background: #fff;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;  
-}
-h1 {
-    float: left;
+  background: #ccc;
+  margin: 0;
 }
 
+/*
+  seit mes visas bildes gribam lai tas aiznem 100% konteinera platuma
+  tacu augstumu mes gribam lai browseris izvelas automatiski, lidz ar to nenoradam
+*/
 img {
-    height: 200px;
-    width: 200px;
+  width: 100%;
 }
-.A h2, .A p {
-    color: #999;
-    margin: 10px 0;
-    text-align: center;
-}
-.A {
-    float: left;
-    background: #eee;
-    width: 29%;
-    margin: 1%;
-    padding: 1%;
-}
-.wrapper {
-background: #fff;
-max-width: 1200px;
-margin: 0 auto;
-padding: 20px;
-}
-.wrapper:after {
-    content: "";
-    display: block;
-    clear: both;
 
+.first {
+  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
+/*
+ te ir divi vienadi selektori, kas nozime ka visu var sarakstit zem viena
+ var uzlikt fiksetu augstumu height: 450px tacu tad musu lapa bus redzama tikai caur tadu
+ mazu lodzinu ta vieta var uzlikt height: 100% un lapa bus redzama caur lodzinu
+ visa ekrana augstuma tacu ja mes gribam lai uzvedas ka normala lapa tad nevajag so
+ vispar
+
+ custom scrollbar - sarkano scrollbar varam uzlikt visam body un nebus nepieciesams
+ veidot so overflow un ko vel neko
+*/
 .wrapper {
-    padding: 10px;
-    width: 100%;
-    height: 450px;
-    background: rgb(112, 102, 102);
-    overflow-x: hidden;
-    overflow-y: scroll;
+  background: rgb(112, 102, 102);
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+  width: 100%;
 }
-.wrapper::-webkit-scrollbar {
-    width: 10px;
+
+.wrapper > img {
+  margin: 0 5px;
 }
-.wrapper::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(138, 15, 15);
+
+.a-container {
+  font-size: 0;
 }
-* {
-box-sizing: border-box;
+
+/*
+  var portams izmantot float - tacu teiksu ka tas jau driz par dinozauru parvertisies
+  un netiek realaja pasaule varis tik plasi izmantots, ta vieta varama izmantot
+  flexbox, css grid vai vecos labos inline-block
+*/
+.A {
+  font-size: initial;
+  display: inline-block;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.a-inner {
+  background: #eee;
+}
+
+.A h2,
+.A p {
+  color: #999;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/*
+  seit pieskiram scrollbar stilu visai lapai
+*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(138, 15, 15);
 }
